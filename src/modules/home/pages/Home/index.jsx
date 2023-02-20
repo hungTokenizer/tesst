@@ -17,12 +17,10 @@ const Home = ({ t }) => {
     <Row className={style.container} justify="center" align="middle">
       <img className="logoMoon" src={logoMoon} alt="logoMoon" />
 
-      <h1> A Cross-Chain DeFi Aggregator Platform</h1>
+      <h1> BlockX</h1>
 
       <Texty className={style.h2} interval={25}>
-        YearnAgnostic Finance is a token-based ecosystem, and the underline
-        token is YFIAG Token including features like Governance, Vaults and
-        Staking.
+        BlockX
       </Texty>
 
       {pages

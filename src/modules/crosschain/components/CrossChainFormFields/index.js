@@ -79,6 +79,7 @@ const CrossChainFormFields = ({
   };
 
   const onFinish = ({ address, amount }) => {
+    console.log("RUNNNNN")
     setIsLoading(true);
 
     web3context?.instance &&
@@ -94,7 +95,7 @@ const CrossChainFormFields = ({
           account: account.address,
           onError: (error) => {
             if (error?.message) {
-              console.log(error.message);
+              console.log("error",error.message);
 
               errorMessage(error.message);
             }

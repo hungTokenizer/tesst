@@ -19,12 +19,12 @@ const getUserBalance = async (web3, asset, account) => {
     asset.erc20ABI,
     asset.erc20address
   );
-
+  
   const balance = await tokenContract
-    .methods
-    .balanceOf(account)
-    .call({ from: account });
-
+  .methods
+  .balanceOf(account)
+  .call({ from: account });
+  
   return parseFloat(balance) / 10 ** asset.decimals;
 };
 

@@ -40,25 +40,26 @@ const sendTokens = ({
 }) => {
   return (dispatch) => {
     checkApproval(web3, asset, price, amount, account)
-      .then(async () => {
-        try {
-          const bridgeContract = new web3.eth.Contract(
-            asset.bridgeABI,
-            asset.bridgeAddress
+    .then(async () => {
+      try {
+        console.log('sendTokens', asset)
+        const bridgeContract = new web3.eth.Contract(
+          asset.bridgeABI,
+          asset.bridgeAddress
           );
-
+          
           const nonce = await bridgeContract
-            .methods
-            .GetTransactionId()
-            .call({ from: account });
-
+          .methods
+          .GetTransactionId()
+          .call({ from: account });
+          
           const message = web3.utils.soliditySha3(
             { t: 'address', v: account} ,
             { t: 'address', v: address },
             { t: 'uint256', v: web3.utils.toWei(amount.toString(), 'ether') },
             { t: 'uint256', v: nonce }
           ).toString('hex');
-
+            console.log("-------------------------------------------")
           web3.eth.personal.sign(message, account).then((signature) => {
             bridgeContract
               .methods
